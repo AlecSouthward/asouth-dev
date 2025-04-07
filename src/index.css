@@ -1,13 +1,31 @@
+:root {
+  --background-color: #282c34;
+}
+
+* {
+  caret: white underscore;
+}
+
+.green,
+.blue {
+  display: inline;
+}
+
+.green {
+  color: lightgreen;
+}
+
+.blue {
+  color: lightblue;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: monospace;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: antialiased;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: monospace;
 }
