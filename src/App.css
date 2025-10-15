@@ -1,5 +1,5 @@
 .app-container {
-  width: min-content;
+  width: max-content;
   height: max-content;
   white-space: pre-line;
   display: flex;
