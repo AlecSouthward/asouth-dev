@@ -1,15 +1,14 @@
-export const HELP_MESSAGE = `
-	help: Display a list of available commands.
+export const HELP_MESSAGE = `help: Display a list of available commands.
 
-	git: My personal GitHub profile.
+git: My personal GitHub profile.
 
-	src: The source code of this website.
+src: The source code of this website.
 
-	faq: Commonly asked questions about this site.
-	\n
+faq: Commonly asked questions about this site.
+\n
 `;
 export const USERNAME = 'guest';
-export const LOGGED_IN_AS = USERNAME + '@asouth.dev>';
+export const LOGGED_IN_AS = USERNAME + '@asouth.dev> ';
 export const GITHUB_PROFILE_URL = `<a href="https://github.com/AlecSouthward" target="_" class="blue">https://github.com/AlecSouthward</a>`;
 export const GITHUB_REPO_URL = `<a href="https://github.com/AlecSouthward/asouth-dev" target="_" class="blue">https://github.com/AlecSouthward/asouth-dev</a>`;
 export const DIRECTORY_CONTENT = '  README';

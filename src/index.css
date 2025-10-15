@@ -22,10 +22,12 @@ html,
 
 .green {
   color: lightgreen;
+  text-shadow: springgreen 0 0 4px;
 }
 
 .blue {
   color: lightblue;
+  text-shadow: turquoise 0 0 4px;
 }
 
 body {
@@ -36,6 +38,7 @@ body {
   flex-direction: column;
   font-family: monospace;
   overflow-x: hidden;
+  scrollbar-width: thin;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
 }

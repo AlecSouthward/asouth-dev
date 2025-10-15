@@ -60,6 +60,7 @@ function Input({
         ref={inputRef}
         onChange={scrollToBottom}
         maxLength={16}
+        spellCheck={false}
         autoFocus
       />
     </div>
