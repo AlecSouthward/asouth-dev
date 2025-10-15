@@ -1,0 +1,37 @@
+import js from '@eslint/js';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
+
+import tseslint from 'typescript-eslint';
+
+import { defineConfig, globalIgnores } from 'eslint/config';
+
+export default defineConfig([
+  globalIgnores(['dist/**', 'src/db/**']),
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.ts'],
+    languageOptions: { ecmaVersion: 2020, globals: globals.node },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          varsIgnorePattern: '^_',
+          argsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "MemberExpression[object.name='console']:not([property.name='error']):not([property.name='warn']):not([property.name='info'])",
+          message:
+            "Only 'console.error', 'console.warn', and 'console.info' are allowed.",
+        },
+      ],
+    },
+  },
+  prettierRecommended,
+]);

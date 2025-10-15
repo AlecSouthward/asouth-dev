@@ -1,8 +1,9 @@
-import "./App.css";
+import './App.css';
 
-import Terminal from "./components/Terminal";
+import Terminal from './components/Terminal';
 
 function App() {
+  console.log();
   return (
     <div className="app-container">
       <Terminal />
