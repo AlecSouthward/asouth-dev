@@ -13,6 +13,7 @@ html,
 
 * {
   caret: white underscore;
+  font-family: monospace;
 }
 
 .green,
@@ -36,13 +37,8 @@ body {
   height: 100%;
   margin: 0;
   flex-direction: column;
-  font-family: monospace;
   overflow-x: hidden;
   scrollbar-width: thin;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
-}
-
-code {
-  font-family: monospace;
 }

@@ -6,12 +6,12 @@
   align-items: start;
   justify-self: end;
   justify-content: end;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: white;
-  text-shadow: lightblue 0 0 4px;
-  letter-spacing: 0.1rem;
+  text-shadow: lightblue 0 0 0.2em;
+  letter-spacing: 0.08em;
   white-space: pre;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .terminal-container {

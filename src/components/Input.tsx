@@ -61,7 +61,10 @@ function Input({
         onChange={scrollToBottom}
         maxLength={16}
         spellCheck={false}
-        autoFocus
+        autoCapitalize="off"
+        autoCorrect="off"
+        autoComplete="off"
+        enterKeyHint="enter"
       />
     </div>
   );
