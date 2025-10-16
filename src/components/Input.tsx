@@ -4,11 +4,11 @@ import { LOGGED_IN_AS } from '../data/constants';
 
 import { scrollToBottom } from '../utils/generic';
 
-function Input({
+const Input = ({
   submitCallback,
 }: Readonly<{
   submitCallback: (inputValue: string, ignoreCommands?: boolean) => void;
-}>) {
+}>) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function Input({
         type="text"
         ref={inputRef}
         onChange={scrollToBottom}
-        maxLength={16}
+        maxLength={15}
         spellCheck={false}
         autoCapitalize="off"
         autoCorrect="off"
@@ -68,6 +68,6 @@ function Input({
       />
     </div>
   );
-}
+};
 
 export default Input;

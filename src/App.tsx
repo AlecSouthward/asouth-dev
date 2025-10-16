@@ -2,12 +2,12 @@ import './App.css';
 
 import Terminal from './components/Terminal';
 
-function App() {
+const App = () => {
   return (
     <div className="app-container">
       <Terminal />
     </div>
   );
-}
+};
 
 export default App;

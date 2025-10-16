@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { HELP_MESSAGE, LOGGED_IN_AS } from '../data/constants';
 
-import handleCommand from '../utils/commandHandler';
 import { scrollToBottom } from '../utils/generic';
 
+import handleCommand from '../commands/commandHandler';
 import Input from './Input';
 
 function Terminal() {
@@ -12,7 +12,7 @@ function Terminal() {
 
   useEffect(scrollToBottom, [history]);
 
-  function onInputSubmitted(inputValue: string, ignoreCommands = false) {
+  const onInputSubmitted = (inputValue: string, ignoreCommands = false) => {
     let commandResponse = '';
 
     if (!ignoreCommands) {
@@ -26,7 +26,7 @@ function Terminal() {
       );
       return newHistory;
     });
-  }
+  };
 
   return (
     <div className="terminal-container">
