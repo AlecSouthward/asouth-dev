@@ -38,6 +38,8 @@ export const handleCd = (parameters: string[]) => {
     return 'bash: cd: too many arguments';
   } else if (checkIfRootDir(parameters[0])) {
     return '';
+  } else if (parameters[0] === 'README') {
+    return 'bash: cd: README: Not a directory';
   }
 
   return `bash: cd: /${parameters[0].replace(
