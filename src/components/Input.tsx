@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { LOGGED_IN_AS } from '../data/constants';
+import { LOGGED_IN_AS } from '../utils/constants';
 
 import { scrollToBottom } from '../utils/generic';
 
@@ -24,8 +24,9 @@ const Input = ({
   }, []);
 
   useEffect(() => {
-    window.addEventListener('keydown', onKeyPress);
-    return () => window.removeEventListener('keydown', onKeyPress);
+    globalThis.addEventListener('keydown', onKeyPress);
+
+    return () => globalThis.removeEventListener('keydown', onKeyPress);
   }, []);
 
   const onKeyPress = (evt: KeyboardEvent) => {
@@ -43,7 +44,7 @@ const Input = ({
       submitCallback(eventTarget.value.trim());
 
       eventTarget.value = '';
-    } else if (evt.ctrlKey && evt.key === 'c' && window.getSelection()) {
+    } else if (evt.ctrlKey && evt.key === 'c' && globalThis.getSelection()) {
       evt.preventDefault();
 
       submitCallback(eventTarget.value.trim() + '^C', true);
@@ -58,7 +59,7 @@ const Input = ({
       <input
         type="text"
         ref={inputRef}
-        onChange={scrollToBottom}
+        onInput={scrollToBottom}
         maxLength={15}
         spellCheck={false}
         autoCapitalize="off"

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import { HELP_MESSAGE, LOGGED_IN_AS } from '../data/constants';
+import { CLEAR_CODE, HELP_MESSAGE, LOGGED_IN_AS } from '../utils/constants';
 
 import { scrollToBottom } from '../utils/generic';
 
 import handleCommand from '../commands/commandHandler';
 import Input from './Input';
 
-function Terminal() {
+const Terminal = () => {
   const [history, setHistory] = useState([HELP_MESSAGE]);
 
   useEffect(scrollToBottom, [history]);
@@ -17,6 +17,11 @@ function Terminal() {
 
     if (!ignoreCommands) {
       commandResponse = handleCommand(inputValue);
+
+      if (commandResponse === CLEAR_CODE) {
+        setHistory([]);
+        return;
+      }
     }
 
     setHistory((prev) => {
@@ -40,6 +45,6 @@ function Terminal() {
       <Input submitCallback={onInputSubmitted} />
     </div>
   );
-}
+};
 
 export default Terminal;

@@ -1,4 +1,4 @@
-import { DIRECTORY_CONTENT, README_FILE } from '../data/constants';
+import { DIRECTORY_CONTENT, README_FILE } from '../utils/constants';
 
 import { checkIfRootDir } from './commandHelper';
 
@@ -96,4 +96,38 @@ export const handleRm = (flags: string[], parameters: string[]) => {
       })
       .join('\n') + '\n'
   );
+};
+
+export const handleEcho = (parameters: string[]) => {
+  return parameters.join(' \n').replaceAll('"', '') + '\n';
+};
+
+export const handleMkdir = (parameters: string[]) => {
+  if (parameters.length === 0) return 'mkdir: missing operand';
+
+  return parameters
+    .map((param) => {
+      if (checkIfRootDir(param) || param === 'README') {
+        return `mkdir: cannot create directory '${param}': File exists`;
+      }
+
+      return `mkdir: cannot create directory '${param}': Permission denied`;
+    })
+    .join('\n');
+};
+
+export const handleRmdir = (parameters: string[]) => {
+  if (parameters.length === 0) return 'rmdir: missing operand';
+
+  return parameters
+    .map((param) => {
+      if (checkIfRootDir(param)) {
+        return `rmdir: failed to remove '${param}': Directory not empty`;
+      } else if (param === 'README') {
+        return `rmdir: failed to remove '${param}: Not a directory`;
+      }
+
+      return `rmdir: cannot create directory '${param}': No such file or directory`;
+    })
+    .join('\n');
 };

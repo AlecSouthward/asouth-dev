@@ -29,6 +29,7 @@ export const UFW_STATUS = `Status: active
 To                         Action      From
 --                         ------      ----
 443/tcp                    ALLOW       Anywhere                  
-80/tcp                     ALLOW       Anywhere                  
-443/tcp (v6)               ALLOW       Anywhere (v6)             
-80/tcp (v6)                ALLOW       Anywhere (v6)`;
+443/tcp (v6)               ALLOW       Anywhere (v6)`;
+
+// Used to handle clearing history
+export const CLEAR_CODE = 'CLEAR_TERMINAL_HISTORY';
