@@ -1,4 +1,4 @@
-import { DIRECTORY_CONTENT, README_FILE } from '../utils/constants';
+import { README_FILE } from '../utils/constants';
 
 import { checkIfRootDir } from './commandHelper';
 
@@ -16,21 +16,19 @@ export const handleCat = (parameters: string[]) => {
 
 export const handleLs = (parameters: string[]) => {
   if (parameters.length > 0) {
-    return (
-      parameters
-        .map((param) => {
-          if (checkIfRootDir(param)) return `${DIRECTORY_CONTENT}`;
+    return parameters
+      .map((param) => {
+        if (checkIfRootDir(param) || param === 'README') return 'README';
 
-          return `ls: cannot access '/${param.replace(
-            '/',
-            ''
-          )}': No such file or directory`;
-        })
-        .join('\n\n') + '\n\n'
-    );
+        return `ls: cannot access '/${param.replace(
+          '/',
+          ''
+        )}': No such file or directory`;
+      })
+      .join('\n');
   }
 
-  return `${DIRECTORY_CONTENT}\n\n`;
+  return `README`;
 };
 
 export const handleCd = (parameters: string[]) => {
