@@ -2,16 +2,16 @@ import { README_FILE } from '../utils/constants';
 
 import { checkIfRootDir } from './commandHelper';
 
-export const handlePrintFile = (parameters: string[]) => {
+export const handlePrintFile = (command: string, parameters: string[]) => {
   if (parameters.includes('README')) {
     return README_FILE;
   } else if (parameters.some(checkIfRootDir)) {
-    return `cat: ${parameters[0]}: Is a directory`;
+    return `${command}: ${parameters[0]}: Is a directory`;
   } else if (parameters.length === 0) {
-    return 'cat: No file supplied';
+    return `${command}: No file supplied`;
   }
 
-  return `cat: ${parameters[0]}: No such file or directory`;
+  return `${command}: ${parameters[0]}: No such file or directory`;
 };
 
 export const handleLs = (parameters: string[]) => {

@@ -62,7 +62,7 @@ const handleCommand = (commandString: string) => {
     case 'tail':
     case 'less':
     case 'cat':
-      return handlePrintFile(parameters);
+      return handlePrintFile(command, parameters);
     case 'ps':
       return '  PID TTY\tTIME CMD';
     case 'unalias':
