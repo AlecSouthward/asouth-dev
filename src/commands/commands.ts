@@ -2,7 +2,7 @@ import { README_FILE } from '../utils/constants';
 
 import { checkIfRootDir } from './commandHelper';
 
-export const handleCat = (parameters: string[]) => {
+export const handlePrintFile = (parameters: string[]) => {
   if (parameters.includes('README')) {
     return README_FILE;
   } else if (parameters.some(checkIfRootDir)) {
@@ -99,7 +99,7 @@ export const handleRm = (flags: string[], parameters: string[]) => {
 };
 
 export const handleEcho = (parameters: string[]) => {
-  return parameters.join(' \n').replaceAll('"', '') + '\n';
+  return parameters.join(' ').replaceAll('"', '') + '\n';
 };
 
 export const handleMkdir = (parameters: string[]) => {
@@ -128,6 +128,48 @@ export const handleRmdir = (parameters: string[]) => {
       }
 
       return `rmdir: cannot create directory '${param}': No such file or directory`;
+    })
+    .join('\n');
+};
+
+export const handleChown = (parameters: string[]) => {
+  if (parameters.length === 0) return 'chmod: missing operand';
+
+  return parameters
+    .map((param) => {
+      if (checkIfRootDir(param) || param === 'README') {
+        return `chown: changing ownership of '${param}': Operation not permitted`;
+      }
+
+      return `chown: cannot access '${param}': No such file or directory`;
+    })
+    .join('\n');
+};
+
+export const handleChmod = (parameters: string[]) => {
+  if (parameters.length === 0) return 'chmod: missing operand';
+
+  return parameters
+    .map((param) => {
+      if (checkIfRootDir(param) || param === 'README') {
+        return `chmod: changing permissions of '${param}': Operation not permitted`;
+      }
+
+      return `chmod: cannot access '${param}': No such file or directory`;
+    })
+    .join('\n');
+};
+
+export const handleTouch = (parameters: string[]) => {
+  if (parameters.length === 0) return 'touch: missing file operand';
+
+  return parameters
+    .map((param) => {
+      if (checkIfRootDir(param) || param === 'README') {
+        return `touch: cannot touch '${param}': Permission denied`;
+      }
+
+      return `touch: cannot touch '${param}': No such file or directory`;
     })
     .join('\n');
 };

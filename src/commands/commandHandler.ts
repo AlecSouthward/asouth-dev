@@ -9,14 +9,17 @@ import {
 } from '../utils/constants';
 
 import {
-  handleCat,
   handleCd,
+  handleChmod,
+  handleChown,
   handleEcho,
   handleLs,
   handleMan,
   handleMkdir,
+  handlePrintFile,
   handleRm,
   handleRmdir,
+  handleTouch,
 } from './commands';
 
 export const commandHistory: string[] = [];
@@ -55,8 +58,26 @@ const handleCommand = (commandString: string) => {
       return GITHUB_REPO_URL;
     case 'faq':
       return COMMONLY_ASKED_QUESTIONS;
+    case 'head':
+    case 'tail':
+    case 'less':
     case 'cat':
-      return handleCat(parameters);
+      return handlePrintFile(parameters);
+    case 'ps':
+      return '  PID TTY\tTIME CMD';
+    case 'unalias':
+      if (parameters.length === 0) return 'unalias: usage: unalias name';
+      else
+        return parameters
+          .map((param) => `bash: unalias: ${param}: not found`)
+          .join('\n');
+    case 'alias':
+      if (parameters.length === 0) return '';
+      else return 'bash: alias: failed to create alias';
+    case 'kill':
+      return 'bash: kill: Permission denied';
+    case 'touch':
+      return handleTouch(parameters);
     case 'ls':
       return handleLs(parameters);
     case 'cd':
@@ -90,6 +111,26 @@ const handleCommand = (commandString: string) => {
       return handleMkdir(parameters);
     case 'rmdir':
       return handleRmdir(parameters);
+    case 'chown':
+      return handleChown(parameters);
+    case 'chmod':
+      return handleChmod(parameters);
+    case 'grep':
+    case 'find':
+      return `bash: ${command}: Failed to execute`;
+    case 'ssh':
+    case 'scp':
+    case 'zip':
+    case 'unzip':
+    case 'tar':
+    case 'wget':
+    case 'curl':
+    case 'top':
+      return (
+        `The program '${command}' is currently not installed.\n` +
+        'You can install it by typing:\n' +
+        `apt install ${command}`
+      );
     case 'shutdown':
     case 'exit':
       window.close();
