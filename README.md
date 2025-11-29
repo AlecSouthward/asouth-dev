@@ -40,7 +40,7 @@ npm run format
 
 ## Deployment
 
-The workflow for deploying can be found under `.github/workflows/deploy-to-pages.yml`.
+The workflow for deploying can be found under [`.github/workflows/deploy-to-pages.yml`](./.github/workflows/deploy-to-pages.yml).
 
 ## License
 
