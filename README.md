@@ -1,4 +1,4 @@
-# [`asouthdev`](https://asouthdev.co.za/)
+# [`asouth.dev`](https://asouth.dev/)
 
 This is a simple website mimicking a bash terminal.
 It was initially created to test out Google's App Engine, but now I use it as my personal site.
